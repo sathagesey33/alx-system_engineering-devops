@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Use a for loop to list and process files in the current directory
+for file in *; do
+    # Check if the file exists and is a regular file
+    if [ -f "$file" ]; then
+        # Remove the part of the name before the first dash
+        new_name="${file#*-}"
+        # Print the extracted name
+        echo "$new_name"
+    fi
+done
+
