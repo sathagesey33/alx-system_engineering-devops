@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Use a while loop to iterate from 1 to 20
+count=1  # Initialize the counter
+while [ $count -le 20 ]
+do
+    case $count in
+        4)
+            echo "$count and then bad luck from China"
+            ;;
+        9)
+            echo "$count and then bad luck from Japan"
+            ;;
+        17)
+            echo "$count and then bad luck from Italy"
+            ;;
+        *)
+            echo $count
+            ;;
+    esac
+
+    count=$((count + 1))  
+done
