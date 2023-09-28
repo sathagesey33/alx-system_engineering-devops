@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Use a while loop to display the time
+hour=0 
+minute=1  
+while [ $hour -le 12 ]
+do
+    while [ $minute -le 59 ]
+    do
+        printf "%02d:%02d\n" $hour $minute  # Format and print the time
+        minute=$((minute + 1))  # Increment the minute
+    done
+
+    hour=$((hour + 1))  # Increment the hour
+    minute=0  # Reset the minute to 0 for the next hour
+done
+
