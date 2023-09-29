@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Use a while loop to read and process /etc/passwd file
+while IFS=: read -r username _ uid gid gecos home shell; do
+    # Extract user information from gecos field (comma-separated)
+    IFS=',' read -ra userinfo <<< "$gecos"
+    
+    # Extract relevant information
+    full_name="${userinfo[0]}"
+    group_id="${userinfo[1]}"
+    command_shell="$shell"
+    password="*****"  # Placeholder for password
+    
+    # Display user information in the specified format
+    echo "The user $username is part of the $group_id gang,"
+    echo "lives in $home and rides $command_shell."
+    echo "User ID's place is protected by the passcode $password,"
+    echo "more info about the user here: $full_name"
+    echo "--------------------------------------------"
+done < /etc/passwd
+
