@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# sets up a trap to catch the SIGTERM signal and display the message "I am invincible!!!" before exiting the script.
+trap 'echo "I am invincible!!!"; exit' SIGTERM
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
+
