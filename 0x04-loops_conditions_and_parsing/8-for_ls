@@ -9,4 +9,3 @@ for file in *; do
         echo "$new_name"
     fi
 done
-
