@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Use a while loop to read and process /etc/passwd file
+while IFS=: read -r username _ uid _ _ home _; do
+    # Display username, user ID, and home directory path
+    echo "Username: $username"
+    echo "User ID: $uid"
+    echo "Home Directory: $home"
+    echo "--------------------" # Separator between entries
+done < /etc/passwd
+
