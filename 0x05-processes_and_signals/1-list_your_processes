@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "PID   PPID   USER      COMMAND"
+ps -eo pid,ppid,user,cmd --forest
+
