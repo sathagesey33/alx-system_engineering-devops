@@ -2,5 +2,5 @@
 #filters the output to only show lines containing the word "bash".
 # shellcheck disable=SC2009
 echo "Lines containing 'bash' word:"
-ps axo pid,ppid,user,cmd --forest | grep -w "bash"
+ps axo pid,ppid,user,cmd --forest | grep  "bash"
 
