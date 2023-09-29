@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# ps -eo pid,ppid,user,cmd --forest is the command that retrieves the list of processes.
 echo "PID   PPID   USER      COMMAND"
 ps -eo pid,ppid,user,cmd --forest
 
