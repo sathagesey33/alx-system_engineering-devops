@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# script that performs a 404 redirection
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+
+string_to_redirect="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\tinternal;\n\t}"
+
+sudo sed -i "s/listen 80 default_server;/$string_to_redirect/" /etc/nginx/sites-enabled/default
+
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+sudo service nginx restart
