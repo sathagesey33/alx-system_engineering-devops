@@ -24,3 +24,4 @@ sudo nginx -t
 
 # restart nginx after implementing changes
 sudo service nginx restart
+
