@@ -1,0 +1,4 @@
+*nat
+: PREROUTTING ACCEPT [0:0]
+-A PREROUTTING -P  tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
