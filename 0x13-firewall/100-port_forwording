@@ -1,4 +1,3 @@
-# Redirect incoming TCP traffic on port 8080 to port 80
 #
 # rules.before
 #
