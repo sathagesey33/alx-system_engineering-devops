@@ -9,6 +9,7 @@ nginx_status=$(netstat -tuln | grep -E ':(80)\s' | grep nginx)
 if [ -z "$nginx_status" ]; then
     # Configure Nginx to listen on port 80
     sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+    sudo ln -sf /etc/nginx/sites-available/defualt /etc/nginx/sites-enabled/default
     
     # Restart Nginx to apply changes
     systemctl restart nginx
