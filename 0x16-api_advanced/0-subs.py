@@ -1,36 +1,17 @@
 #!/usr/bin/python3
-""" 
-reddit
-"""
+
+""" queries the Reddit API and returns the number of subscribers"""
+
 import requests
+import sys
 
 
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "Custom User Agent"}
-
-    try:
-        response = requests.get(url, headers=headers)
-        data = response.json()
-
-        # Check if the subreddit exists
-        if 'error' in data:
-            return 0
-
-        return data['data']['subscribers']
-    except Exception as e:
-        print(f"Error: {e}")
-        return 0
-
-# Example usage
-
-
-if __name__ == '__main__':
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        subreddit = sys.argv[1]
-        subscribers = number_of_subscribers(subreddit)
-        print(f"{subscribers}")
+    """ returns the number of subscribers """
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0)\
+ Gecko/20100101 Firefox/76.0"}
+    res = requests.get(url, headers=headers)
+    if res.status_code == 200:
+        return res.json().get("data").get("subscribers")
+    return 0
