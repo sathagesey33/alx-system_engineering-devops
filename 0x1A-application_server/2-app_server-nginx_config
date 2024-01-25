@@ -21,12 +21,19 @@
 server {
 	listen 80 default_server;
 	location /hbnb_static { alias /data/web_static/current/;}
+	location /airbnb-onepage {
+	
+	include proxy_params; 
+	proxy_pass http://localhost:5000/airbnb-onepage/;
+
+	}
+
 	error_page 404 /404.html;
 	location = /404.html {
 		root /var/www/html;
-		internal;
+	internal;
 	}
-
+	
 	listen [::]:80 default_server;
 
 	# SSL configuration
@@ -50,17 +57,9 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
 
-	#server_name _;
-	server_name 100.26.241.219;
-	add_header X-Served-By 82751-web-01;
-	rewrite ^/redirect_me https://github.com/nokekip permanent;
-
-	error_page 404 /404.html;
-	
-	location /airbnb-onepage {
-                include proxy_params;
-                proxy_pass http://localhost:5000/airbnb-onepage/;
-        }
+	server_name 54.87.157.124; 
+add_header X-Served-By 317567-web-01;
+	rewrite ^/redirect_me https://github.com/sathagesey33 permanent;
 
 	location / {
 		# First attempt to serve request as file, then
@@ -87,22 +86,3 @@ server {
 	#}
 }
 
-
-# Virtual Host configuration for example.com
-#
-# You can move that to a different file under sites-available/ and symlink that
-# to sites-enabled/ to enable it.
-#
-#server {
-#	listen 80;
-#	listen [::]:80;
-#
-#	server_name example.com;
-#
-#	root /var/www/example.com;
-#	index index.html;
-#
-#	location / {
-#		try_files $uri $uri/ =404;
-#	}
-#}
